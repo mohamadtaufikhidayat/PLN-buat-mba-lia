@@ -9,16 +9,20 @@ import javax.persistence.*;
 @Table(name="tb_pasangBaru")
 public class PasangBaru {
     @Id
-    @GeneratedValue(generator = "sequencepelangaan" )
+    @GeneratedValue(
+            generator = "sequencePasangBaru",
+            strategy = GenerationType.SEQUENCE
+
+    )
     @GenericGenerator(
-            name = "sequencepelanggan",strategy = "123",
+            name = "sequencePasangBaru",strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
-                    @org.hibernate.annotations.Parameter(name = "1",value = "1"),
-                    @org.hibernate.annotations.Parameter(name = "initial_value",value = "12031"),
-                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "product_sequencePasangBaru"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "40001"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1"),
+                    @org.hibernate.annotations.Parameter(name = "optimizer", value = "pooled-lo")
             }
     )
-    @Column(name = "id")
     private Long noUrut;
     @Column
     private String namaCalonPengguna;
